@@ -1,12 +1,13 @@
 import time
 import numpy as np
+import os
 from pygame import mixer
 import MusicSwitcher as ms
 
 
-class MusicPlayerd:
+class MusicPlayer:
     # フォルダ名と拡張子(後でくっつける)
-    MUSIC_FOLDER = "music/"
+    MUSIC_FOLDER = "C:\main\大学の色々\挑戦型プロジェクト\LaserProject" + "\music\\"
     EXTENSION = ".wav"
     # 実際の音源ファイル名
     MUSIC_FILES = [["mute", "mute", "mute"],
@@ -17,6 +18,7 @@ class MusicPlayerd:
     speakers = np.empty((3, 3), object)
 
     def __init__(self):
+        print("--Sound Initializing--")
         ch = 0
         mixer.init(frequency=44100)
         # 音源の数だけspeakerを作る
@@ -26,7 +28,8 @@ class MusicPlayerd:
             for index in range(self.musicFiles.shape[1]):
                 # mixer.channelは配列ではだめなので別口の変数を作る
                 musicFile = self.MUSIC_FOLDER + self.musicFiles[music, index] + self.EXTENSION
-                #print(musicFile)
+                print(os.path.isfile(musicFile))
+                print(musicFile)
                 self.speakers[music, index] = mixer.Channel(ch)
                 self.speakers[music, index].play(mixer.Sound(musicFile), -1)
                 self.speakers[music, index].pause()
@@ -37,8 +40,13 @@ class MusicPlayerd:
         # 書き方が微妙
         # 動いてない
         currentLaser = ms.switchLaser()
-        currentDist_fileance = ms.switchDistance()
-        currentSound = self.speakers[currentLaser, currentDist_fileance].get_sound()
-        self.speakers[currentLaser, currentDist_fileance].unpause()
+        currentDistance = ms.switchDistance()
+        currentSound = self.speakers[currentLaser, currentDistance].get_sound()
+        print("実行中...")
+        self.speakers[currentLaser, currentDistance].unpause()
         time.sleep(currentSound.get_length())
-        self.speakers[currentLaser, currentDist_fileance].pause()
+        self.speakers[currentLaser, currentDistance].pause()
+
+mp = MusicPlayer()
+while (True):
+    mp.playMusic()
