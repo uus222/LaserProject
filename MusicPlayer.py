@@ -1,13 +1,13 @@
 import time
 import numpy as np
-import os
 from pygame import mixer
+import os
 import MusicSwitcher as ms
 
 
 class MusicPlayer:
     # フォルダ名と拡張子(後でくっつける)
-    MUSIC_FOLDER = "C:\main\大学の色々\挑戦型プロジェクト\LaserProject" + "\music\\"
+    MUSIC_FOLDER = "/home/pi/Desktop/piLaserProject/LaserProject" + "/music/"
     EXTENSION = ".wav"
     # 実際の音源ファイル名
     MUSIC_FILES = [["mute", "mute", "mute"],
@@ -38,7 +38,6 @@ class MusicPlayer:
     def playMusic(self):
         # 1ループ流した後、音源を止める
         # 書き方が微妙
-        # 動いてない
         currentLaser = ms.switchLaser()
         currentDistance = ms.switchDistance()
         currentSound = self.speakers[currentLaser, currentDistance].get_sound()
@@ -50,3 +49,4 @@ class MusicPlayer:
 mp = MusicPlayer()
 while (True):
     mp.playMusic()
+
