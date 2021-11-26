@@ -1,7 +1,7 @@
 #import time
 #import numpy as np
 #from pygame import mixer
-#import MusicSwitcher as ms
+import MusicSwitcher as ms
 
 # 音の制御クラス(名前変えたほうが良くないか？)
 # 音源の数だけ作る
@@ -20,6 +20,7 @@ class MusicPlayer:
         #Runnerで下記のコードを書く
         #currentSound = self.speakers[self.LASER_CH, self.DISTANCE_CH].get_sound()
         print("実行中...")
+        currentCh = ms.switchLaser(),ms.switchDistance()
         if self.MySoundCh == currentSound:
             if self.PLAYED == False:
                 self.speakers[self.MySoundCh].unpause()
@@ -28,7 +29,12 @@ class MusicPlayer:
         #time.sleep(currentSound.get_length())
             self.speakers[self.MySoundCh].pause()
             self.PLAYED = False
-
+    
+    def printCH(self):
+        #print(ms.switchLaser(),ms.switchDistance())
+        currentSound=ms.switchLaser(),ms.switchDistance()
+        if self.MySoundCh == currentSound:
+            print(currentSound)
 """
 mp1 = MusicPlayer()
 list = 1,1

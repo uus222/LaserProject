@@ -5,7 +5,7 @@ currentLaser = ms.switchLaser()
 currentDistance = ms.switchDistance()
 """
 
-import MusicPlayer as mp
+from MusicPlayer import MusicPlayer as mp
 import MusicSwitcher as ms
 from MusicInitializer import MusicInitializer as mi
 import numpy as np
@@ -18,12 +18,10 @@ shapes = musicIn.getShapes()
 musicplayers = np.empty((shapes), object)
 for row in range(shapes[0]):
     for line in range(shapes[1]):
-        musicplayers[row,line] = mp.MusicPlayer(row,line)
+        musicplayers[row,line] = mp(row,line)
 
 while True:
-    # hukusuu tukaenai
-    currentCh = ms.switchLaser(),ms.switchDistance()
-    print(currentCh)
+    #test no houhou
     """
     for row in range(shapes[0]):
         for line in range(shapes[1]):
