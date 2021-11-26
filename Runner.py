@@ -21,8 +21,13 @@ for row in range(shapes[0]):
         musicplayers[row,line] = mp.MusicPlayer(row,line)
 
 while True:
-    currentCh = ms.switchLaser,ms.switchDistance
+    # hukusuu tukaenai
+    currentCh = ms.switchLaser(),ms.switchDistance()
+    print(currentCh)
+    """
     for row in range(shapes[0]):
         for line in range(shapes[1]):
-            musicplayers[row,line].playMusic(currentCh)
-            #print("checked musicplayer[" + row + "," + line + "]") #動作確認用
+            #musicplayers[row,line].playMusic(currentCh)
+            print("checked musicplayer",row,line) #動作確認用
+
+    """

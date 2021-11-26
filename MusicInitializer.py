@@ -3,7 +3,8 @@ from pygame import mixer
 
 class MusicInitializer:
     # フォルダ名と拡張子(後でくっつける)0
-    MUSIC_FOLDER = "C:\\Users\\tomy0\\Desktop" + "\\music\\"
+    #MUSIC_FOLDER = "C:\\Users\\tomy0\\Desktop" + "\\music\\"
+    MUSIC_FOLDER = "/home/pi/Desktop/piLaserProject/LaserProject/music/"
     EXTENSION = ".wav"
     # 実際の音源ファイル名
     # Musicフォルダ内を探索して自動生成とかできない？

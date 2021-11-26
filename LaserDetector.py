@@ -11,8 +11,6 @@ pi = pigpio.pi()
 adc = mcp3204.mcp3204( pi, SPI_CE, SPI_SPEED, VREF )
 
 def getLaser(ch:int) :
-    if (ch==2) | (ch==3):
-        ch=1
     return adc.get_volt(adc.get_value(ch))
 
 """
