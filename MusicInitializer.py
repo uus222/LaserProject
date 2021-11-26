@@ -2,8 +2,8 @@ import numpy as np
 from pygame import mixer
 
 class MusicInitializer:
-    # フォルダ名と拡張子(後でくっつける)
-    MUSIC_FOLDER = "hogehoge" + "\music\\"
+    # フォルダ名と拡張子(後でくっつける)0
+    MUSIC_FOLDER = "C:\\Users\\tomy0\\Desktop" + "\\music\\"
     EXTENSION = ".wav"
     # 実際の音源ファイル名
     # Musicフォルダ内を探索して自動生成とかできない？
@@ -11,8 +11,8 @@ class MusicInitializer:
                    ["off_ass", "off_bell", "off_connect"],
                    ["off_intro", "off_loop", "off_melo2"]]
     musicFiles = np.array(MUSIC_FILES)  # numpyで使えるようにする
-    # 音源の数だけ空配列を作る
-    speakers = np.empty((3, 3), object)
+    # 音源の数だけ空配列を作
+    speakers = np.empty((len(MUSIC_FILES), len(MUSIC_FILES[0])), object)
     def initMusicPayer(self):
         print("--Music Initializing--")
         ch = 0
@@ -31,3 +31,6 @@ class MusicInitializer:
                 self.speakers[music, index].play(mixer.Sound(musicFile), -1)
                 self.speakers[music, index].pause()
                 ch += 1
+    
+    def getShapes(self):
+        return len(self.MUSIC_FILES),len(self.MUSIC_FILES[0])
