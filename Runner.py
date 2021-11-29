@@ -5,6 +5,7 @@ currentLaser = ms.switchLaser()
 currentDistance = ms.switchDistance()
 """
 
+import time
 from MusicPlayer import MusicPlayer as mp
 import MusicSwitcher as ms
 from MusicInitializer import MusicInitializer as mi
@@ -22,10 +23,10 @@ for row in range(shapes[0]):
 
 while True:
     #test no houhou
-    """
     for row in range(shapes[0]):
         for line in range(shapes[1]):
             #musicplayers[row,line].playMusic(currentCh)
-            print("checked musicplayer",row,line) #動作確認用
-
-    """
+            #print("checked musicplayer",row,line)
+            musicplayers[row,line].playMusic()
+    time.sleep(3)
+    print("-----")

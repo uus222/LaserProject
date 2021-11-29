@@ -2,6 +2,7 @@
 #import numpy as np
 #from pygame import mixer
 import MusicSwitcher as ms
+import LaserDetector as LD
 
 # 音の制御クラス(名前変えたほうが良くないか？)
 # 音源の数だけ作る
@@ -14,22 +15,23 @@ class MusicPlayer:
         #self.LASER_CH=laserCh
         #self.DISTANCE_CH=distCh
         self.MySoundCh = laserCh,distCh
-    def playMusic(self, currentSound):
+    def playMusic(self):
         # 1ループ流した後、音源を止める
         # 書き方が微妙
-        #Runnerで下記のコードを書く
-        #currentSound = self.speakers[self.LASER_CH, self.DISTANCE_CH].get_sound()
-        print("実行中...")
-        currentCh = ms.switchLaser(),ms.switchDistance()
+        #print("LD",self.MySoundCh[0],LD.getLaser(self.MySoundCh[0]))
+        currentSound = ms.switchLaser(self.MySoundCh[0]),ms.switchDistance()
+        #print("run",self.MySoundCh,currentSound)
         if self.MySoundCh == currentSound:
             if self.PLAYED == False:
                 self.speakers[self.MySoundCh].unpause()
+                print("run",self.MySoundCh,currentSound)
                 self.PLAYED = True
         elif self.PLAYED == True:
         #time.sleep(currentSound.get_length())
             self.speakers[self.MySoundCh].pause()
             self.PLAYED = False
-    
+        
+
     def printCH(self):
         #print(ms.switchLaser(),ms.switchDistance())
         currentSound=ms.switchLaser(),ms.switchDistance()
