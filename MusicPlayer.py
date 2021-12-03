@@ -1,6 +1,8 @@
 #import time
 #import numpy as np
-#from pygame import mixer
+from numpy.core.arrayprint import _object_format
+from pygame import mixer
+from MusicInitializer import MusicInitializer
 import MusicSwitcher as ms
 import LaserDetector as LD
 
@@ -11,24 +13,27 @@ class MusicPlayer:
     #LASER_CH=0
     #DISTANCE_CH=0
     MySoundCh = 0,0
-    def __init__(self,laserCh,distCh):
+    speaker = object
+    def __init__(self,laserCh,distCh,speaker):
         #self.LASER_CH=laserCh
         #self.DISTANCE_CH=distCh
+        self.speaker = speaker
         self.MySoundCh = laserCh,distCh
     def playMusic(self):
+        
         # 1ループ流した後、音源を止める
         # 書き方が微妙
-        #print("LD",self.MySoundCh[0],LD.getLaser(self.MySoundCh[0]))
+        print("LD",self.MySoundCh[0],LD.getLaser(self.MySoundCh[0]))
         currentSound = ms.switchLaser(self.MySoundCh[0]),ms.switchDistance()
         #print("run",self.MySoundCh,currentSound)
         if self.MySoundCh == currentSound:
             if self.PLAYED == False:
-                self.speakers[self.MySoundCh].unpause()
+                self.speaker.unpause()
                 print("run",self.MySoundCh,currentSound)
                 self.PLAYED = True
         elif self.PLAYED == True:
         #time.sleep(currentSound.get_length())
-            self.speakers[self.MySoundCh].pause()
+            self.speaker.pause()
             self.PLAYED = False
         
 

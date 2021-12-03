@@ -19,7 +19,7 @@ shapes = musicIn.getShapes()
 musicplayers = np.empty((shapes), object)
 for row in range(shapes[0]):
     for line in range(shapes[1]):
-        musicplayers[row,line] = mp(row,line)
+        musicplayers[row,line] = mp(row,line,musicIn.speakers[row,line])
 
 while True:
     #test no houhou
