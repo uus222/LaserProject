@@ -28,9 +28,10 @@ class MusicInitializer:
                     self.musicFiles[music, index] + self.EXTENSION
                 #print(os.path.isfile(musicFile))
                 print(musicFile)
-                self.speakers[music, index] = mixer.Channel(ch)
-                self.speakers[music, index].play(mixer.Sound(musicFile), -1)
-                self.speakers[music, index].pause()
+                # read to static speakers
+                MusicInitializer.speakers[music, index] = mixer.Channel(ch)
+                MusicInitializer.speakers[music, index].play(mixer.Sound(musicFile), -1)
+                MusicInitializer.speakers[music, index].pause()
                 ch += 1
     
     def getShapes(self):

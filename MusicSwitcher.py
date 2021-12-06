@@ -1,9 +1,9 @@
 import DistanceDetector as DD
 import LaserDetector as LD
 
-DISTANCES_THRES = [0, 1, 5, 10, 15, 20]
+DISTANCES_THRES = [0, 1, 5]
 #レーザーの数
-LASER_NUM = 2
+LASER_NUM = 3
 #レーザーのしきい値
 LASER_THRES = 2.0
 def switchDistance():
@@ -24,6 +24,6 @@ def switchDistance():
 def switchLaser(ch):
     musicIndex = 0
     if LD.getLaser(ch) <= LASER_THRES:
-        musicIndex = ch+1
+        musicIndex = ch
     return musicIndex
 
