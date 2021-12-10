@@ -22,7 +22,7 @@ def switchDistance():
 #MusicPlayer de arg watasu
 #何も入力がない時０にする
 def switchLaser(ch):
-    musicIndex = 0
+    musicIndex = -1
     if LD.getLaser(ch) <= LASER_THRES:
         musicIndex = ch
     return musicIndex

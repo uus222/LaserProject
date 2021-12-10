@@ -28,5 +28,5 @@ while True:
             #musicplayers[row,line].playMusic(currentCh)
             #print("checked musicplayer",row,line)
             musicplayers[row,line].playMusic()
-    time.sleep(3)
-    print("-----")
+    #time.sleep(0.5)
+    #print("-----")

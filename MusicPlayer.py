@@ -9,25 +9,28 @@ import LaserDetector as LD
 # 音の制御クラス(名前変えたほうが良くないか？)
 # 音源の数だけ作る
 class MusicPlayer:
-    PLAYED = False
-    myLaserCh=0
-    myDistCh=0
+    isPlayed = False
+    mySoundCh = 0,0
     def __init__(self,laserCh,distCh):
-        self.myLaserCh,self.myDistCh = laserCh,distCh
+        # laser tyousei
+        self.mySoundCh = laserCh,distCh
     def playMusic(self):
         # 1ループ流した後、音源を止める
         # 書き方が微妙
-        #print("LD",self.MySoundCh[0],LD.getLaser(self.MySoundCh[0]))
-        currentSound = ms.switchLaser(self.MySoundCh[0]),ms.switchDistance()
-        print("my",self.MySoundCh,"cur",currentSound,"LD",self.MySoundCh[0],LD.getLaser(self.MySoundCh[0]))
-        if self.MySoundCh == currentSound:
+        #print("LD",self.mySoundCh[0],LD.getLaser(self.mySoundCh[0]))
+        currentSound = ms.switchLaser(self.mySoundCh[0]),ms.switchDistance()
+        if currentSound[0] == -1:
+            if self.isPlayed == True:
+                print("pause")
+                MusicInitializer.speakers[self.mySoundCh].pause()
+                self.isPlayed = False
+            return 0#print("nonne laser")
+        #print("my",self.mySoundCh,"cur",currentSound,"LD",self.mySoundCh[0],LD.getLaser(self.mySoundCh[0]))
+        if self.mySoundCh == currentSound:
             #ongen +1 zureru
-            MusicInitializer.speakers[self.MySoundCh].unpause()
-            print("run",self.MySoundCh,currentSound)
-        else :
-        #time.sleep(currentSound.get_length())
-            print("pause")
-            MusicInitializer.speakers[self.MySoundCh].pause()
+            MusicInitializer.speakers[self.mySoundCh].unpause()
+            #print("run",self.mySoundCh,currentSound)
+            self.isPlayed = True
         
 
     def testPrint(self):
