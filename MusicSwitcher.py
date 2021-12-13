@@ -5,7 +5,7 @@ DISTANCES_THRES = [0, 1, 5]
 #レーザーの数
 LASER_NUM = 3
 #レーザーのしきい値
-LASER_THRES = 2.0
+LASER_THRES = 1.5
 def switchDistance():
     musicIndex = 0
     currentDistance = DD.getDistance()

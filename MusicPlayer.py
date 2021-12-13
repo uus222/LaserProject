@@ -28,6 +28,7 @@ class MusicPlayer:
         #print("my",self.mySoundCh,"cur",currentSound,"LD",self.mySoundCh[0],LD.getLaser(self.mySoundCh[0]))
         if self.mySoundCh == currentSound:
             #ongen +1 zureru
+            print(self.mySoundCh)
             MusicInitializer.speakers[self.mySoundCh].unpause()
             #print("run",self.mySoundCh,currentSound)
             self.isPlayed = True

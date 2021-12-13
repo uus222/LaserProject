@@ -18,7 +18,7 @@ def getDistance():
     while GPIO.input(ECHO) == 1:
         signalon = time.time()
     timepassed = signalon - signaloff
-    return timepassed * (331.50 + 0.6)* 50 # cmに直す
+    return timepassed * 332 * 50 # cmに直す
 
 """
 def main():

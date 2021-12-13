@@ -8,7 +8,7 @@ class MusicInitializer:
     EXTENSION = ".wav"
     # 実際の音源ファイル名
     # Musicフォルダ内を探索して自動生成とかできない？
-    MUSIC_FILES = [["off_intro", "off_loop", "off_melo2"],
+    MUSIC_FILES = [["C", "C#", "D"],
                    ["off_ass", "off_bell", "off_connect"],
                    ["off_intro", "off_loop", "off_melo2"],
                    ["off_ass", "off_bell", "off_connect"]]
