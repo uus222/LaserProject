@@ -1,26 +1,17 @@
 import DistanceDetector as DD
 import LaserDetector as LD
 
-DISTANCES_THRES = [0, 1, 5]
-#レーザーの数
-LASER_NUM = 3
+DISTANCES_THRES = [[0,5], [5,10], [10,20]]
 #レーザーのしきい値
 LASER_THRES = 1.5
-def switchDistance():
-    musicIndex = 0
+def switchDistance(ch):
+    musicIndex = -1
     currentDistance = DD.getDistance()
-    #enumerateでインデックスがとれる
-    for index, dsVal in enumerate(DISTANCES_THRES): #処理落ちしそう？
-        if currentDistance >= dsVal: #ここバグりそう？
-            #ここでreturnすると配列の後ろを評価してくれないので、しない
-            musicIndex = index
+    if DISTANCES_THRES[ch][0] <= currentDistance <= DISTANCES_THRES[ch][1]:
+        musicIndex = ch
     return musicIndex
 
-#問題：for文で順次見ると同時にレーザー押さえても２つの音が鳴らない
-# →Laserクラスを作りレーザーの数だけインスタンス生成し、なんとかする？
-#現状解決方法を思いつかないのでクソコードで実装する
-#MusicPlayer de arg watasu
-#何も入力がない時０にする
+#何も入力がない時-1にする
 def switchLaser(ch):
     musicIndex = -1
     if LD.getLaser(ch) <= LASER_THRES:

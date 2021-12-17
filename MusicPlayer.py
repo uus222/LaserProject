@@ -18,20 +18,20 @@ class MusicPlayer:
         # 1ループ流した後、音源を止める
         # 書き方が微妙
         #print("LD",self.mySoundCh[0],LD.getLaser(self.mySoundCh[0]))
-        currentSound = ms.switchLaser(self.mySoundCh[0]),ms.switchDistance()
-        if currentSound[0] == -1:
+        currentSound = ms.switchLaser(self.mySoundCh[0]),ms.switchDistance(self.mySoundCh[1])
+        if (currentSound[0] == -1)or(currentSound[1] == -1):
             if self.isPlayed == True:
-                print("pause")
+                #print("pause")
                 MusicInitializer.speakers[self.mySoundCh].pause()
                 self.isPlayed = False
             return 0#print("nonne laser")
         #print("my",self.mySoundCh,"cur",currentSound,"LD",self.mySoundCh[0],LD.getLaser(self.mySoundCh[0]))
         if self.mySoundCh == currentSound:
-            #ongen +1 zureru
             print(self.mySoundCh)
             MusicInitializer.speakers[self.mySoundCh].unpause()
             #print("run",self.mySoundCh,currentSound)
             self.isPlayed = True
+        
         
 
     def testPrint(self):
