@@ -8,10 +8,12 @@ class MusicInitializer:
     EXTENSION = ".wav"
     # 実際の音源ファイル名
     # Musicフォルダ内を探索して自動生成とかできない？
-    MUSIC_FILES = [["C_tron", "C#_tron", "D_tron"],
-                   ["D#_tron", "E_tron", "F_tron"],
-                   ["mute", "mute", "mute"],
-                   ["mute", "mute", "mute"]]
+    # Dmin7、Emin7、Gmaj7 (何だこれは)
+    # h*→オクターブ上
+    MUSIC_FILES = [["D", "E", "G"],
+                   ["F", "G", "B"],
+                   ["A", "B", "hD"],
+                   ["hC", "hD", "hF#"]]
     musicFiles = np.array(MUSIC_FILES)  # numpyで使えるようにする
     # 音源の数だけ空配列を作
     speakers = np.empty((len(MUSIC_FILES), len(MUSIC_FILES[0])), object)
